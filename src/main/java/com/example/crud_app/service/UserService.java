@@ -38,7 +38,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public void edit( long id, @Valid User user) {
+    public void edit(long id, @Valid User user) {
         User userToBeUpdated = userRepository.findById(id).orElse(null);
         userToBeUpdated.setName(user.getName());
         userToBeUpdated.setAge(user.getAge());
