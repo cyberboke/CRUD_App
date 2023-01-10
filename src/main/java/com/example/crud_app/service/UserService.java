@@ -11,7 +11,6 @@ import org.springframework.validation.annotation.Validated;
 import java.util.List;
 
 @Service
-@Transactional
 @Validated
 public class UserService {
 
@@ -30,6 +29,7 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public void save(@Valid User user) {
         userRepository.save(user);
     }
@@ -38,6 +38,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    @Transactional
     public void edit(long id, @Valid User user) {
         User userToBeUpdated = userRepository.findById(id).orElse(null);
         userToBeUpdated.setName(user.getName());
